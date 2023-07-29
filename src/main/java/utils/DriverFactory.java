@@ -18,13 +18,10 @@ public class DriverFactory {
 
         properties = ConfigReader.getProperties();
         if (browser.equals("Chrome")) {
-            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if (browser.equals("Firefox")) {
-            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         } else {
-            WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
         String url = properties.getProperty("url");

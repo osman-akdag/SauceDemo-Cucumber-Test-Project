@@ -33,8 +33,12 @@ public class ElementHelper {
     public void sendKey(By key, String text){
         findElement(key).sendKeys(text);
     }
-    public void checkVisible(By key){
-        wait.until(ExpectedConditions.visibilityOf(findElement(key)));
+    public boolean isVisible(By locator){
+        return findElement(locator).isDisplayed();
+    }
+
+    public void go (String url){
+        driver.get(url);
     }
 
 }
