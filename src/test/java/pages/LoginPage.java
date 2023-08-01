@@ -12,16 +12,16 @@ public class LoginPage {
 
     WebDriver driver;
     ElementHelper elementHelper;
-    WebDriverWait wait;
 
     //Locators
+    private final By usernameFieldLocator = By.id("user-name");
+    private final By passwordFieldLocator = By.id("password");
     private final By loginButtonLocator = By.id("login-button");
     private final By errorMessageLocator = By.cssSelector("h3");
 
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.elementHelper = new ElementHelper(driver);
     }
 
@@ -29,13 +29,20 @@ public class LoginPage {
         elementHelper.go(url);
     }
 
-    public void clickTheLoginButton() {
+    public void clickLoginButton() {
         elementHelper.click(loginButtonLocator);
     }
 
     public void verifyErrorMessage(String errorMessage) {
         String actualMessage = elementHelper.findElement(errorMessageLocator).getText();
-        System.out.println("----"+actualMessage+"-----");
         Assert.assertEquals(actualMessage,errorMessage);
+    }
+
+    public void enterPasswordInPasswordField(String password) {
+        elementHelper.sendKey(passwordFieldLocator,password);
+    }
+
+    public void enterUsernameInUsernameField(String username) {
+        elementHelper.sendKey(usernameFieldLocator,username);
     }
 }

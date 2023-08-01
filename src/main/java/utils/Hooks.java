@@ -18,7 +18,8 @@ public class Hooks {
     }
 
     @After
-    public void after() {
+    public void after() throws InterruptedException {
+        //Thread.sleep(2000);
         driver.quit();
     }
 }

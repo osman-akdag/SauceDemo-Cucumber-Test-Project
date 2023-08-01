@@ -23,15 +23,14 @@ public class ElementHelper {
     public WebElement presenceElement(By key){
         return wait.until(ExpectedConditions.presenceOfElementLocated(key));
     }
-    public WebElement findElement(By key){
-        WebElement element = presenceElement(key);
-        return element;
+    public WebElement findElement(By locator){
+        return presenceElement(locator);
     }
-    public void click(By key){
-        findElement(key).click();
+    public void click(By locator){
+        findElement(locator).click();
     }
-    public void sendKey(By key, String text){
-        findElement(key).sendKeys(text);
+    public void sendKey(By locator, String text){
+        findElement(locator).sendKeys(text);
     }
     public boolean isVisible(By locator){
         return findElement(locator).isDisplayed();
